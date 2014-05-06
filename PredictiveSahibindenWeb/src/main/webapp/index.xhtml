@@ -1,0 +1,187 @@
+<html xmlns="http://www.w3.org/1999/xhtml"  
+     xmlns:h="http://java.sun.com/jsf/html"      
+      xmlns:f="http://java.sun.com/jsf/core"
+     xmlns:p="http://primefaces.org/ui">  
+ <h:head><title>Welcome to OTV_JSF_Spring_Hibernate_Project</title>
+ <style type="text/css">
+.ui-widget,
+        .ui-widget .ui-widget {
+               font-size: 12px !important;
+              
+         }
+
+</style>
+ </h:head>  
+ <h:body>
+     <h:form id="form">      
+	   
+  <h:outputLabel value="test"></h:outputLabel>
+  
+  <p:fieldset legend="Emlak Değerleri">
+    <h:panelGrid columns="6" >
+        <h:outputLabel value="Sehir"></h:outputLabel>
+        <h:outputLabel value=":"></h:outputLabel>
+        <h:inputText value="#{sahibindenController.sehir}" disabled="true" ></h:inputText>
+        
+        <h:outputLabel value="Ilce"></h:outputLabel>
+        <h:outputLabel value=":"></h:outputLabel>
+        <h:inputText value="#{sahibindenController.ilce}" disabled="true"></h:inputText>
+        
+        <h:outputLabel value="Mahalle"></h:outputLabel>
+        <h:outputLabel value=":"></h:outputLabel>
+        <h:inputText value="#{sahibindenController.mahalle}" disabled="true"></h:inputText>
+        
+        <h:outputLabel value="Yıl"></h:outputLabel>
+        <h:outputLabel value=":"></h:outputLabel>
+        <h:inputText value="#{sahibindenController.yil}" disabled="true"></h:inputText>
+        
+        <h:outputLabel value="m2"></h:outputLabel>
+        <h:outputLabel value=":"></h:outputLabel>
+        <h:inputText value="#{sahibindenController.m2}"></h:inputText>
+        
+        <h:outputLabel value="Oda Sayısı"></h:outputLabel>
+        <h:outputLabel value=":"></h:outputLabel>
+        <h:inputText value="#{sahibindenController.odaSayisi}"></h:inputText>
+        
+        <h:outputLabel value="Banyo Sayısı"></h:outputLabel>
+        <h:outputLabel value=":"></h:outputLabel>
+        <h:inputText value="#{sahibindenController.banyoSayisi}"></h:inputText>
+        
+        <h:outputLabel value="Bina Yaşı"></h:outputLabel>
+        <h:outputLabel value=":"></h:outputLabel>
+        <h:inputText value="#{sahibindenController.binaYasi}"></h:inputText>
+        
+        <h:outputLabel value="Binada Kat Sayısı"></h:outputLabel>
+        <h:outputLabel value=":"></h:outputLabel>
+        <h:inputText value="#{sahibindenController.binaKatSayisi}"></h:inputText>
+        
+        <h:outputLabel value="Bulunduğu Kat"></h:outputLabel>
+        <h:outputLabel value=":"></h:outputLabel>
+        <h:inputText value="#{sahibindenController.bulunduguKat}"></h:inputText>
+        
+        <h:outputLabel value="Isıtma"></h:outputLabel>
+        <h:outputLabel value=":"></h:outputLabel>
+        <p:selectOneMenu  value="#{sahibindenController.isitma}">
+            <f:selectItem itemLabel="Dogalgaz (Kombi)" itemValue="Dogalgaz (Kombi)" />
+         </p:selectOneMenu>
+         
+        <h:outputLabel value="Kullanım Durumu"></h:outputLabel>
+        <h:outputLabel value=":"></h:outputLabel>
+        <p:selectOneMenu  value="#{sahibindenController.kullanimDurumu}">
+            <f:selectItem itemLabel="Bos" itemValue="Bos" />
+            <f:selectItem itemLabel="Kiracili" itemValue="Kiracili" />
+            <f:selectItem itemLabel="Mulk Sahibi" itemValue="Mulk Sahibi" />
+        	<f:selectItem itemLabel="Belirtilmemis" itemValue="Belirtilmemis" />
+        </p:selectOneMenu>
+        
+        <h:outputLabel value="Krediye Uygun Mu"></h:outputLabel>
+        <h:outputLabel value=":"></h:outputLabel>
+        <p:selectOneMenu  value="#{sahibindenController.krediyeUygunMu}">
+            <f:selectItem itemLabel="Evet" itemValue="Evet" />
+            <f:selectItem itemLabel="Hayir" itemValue="Hayir" />
+        </p:selectOneMenu>
+        
+        <h:outputLabel value="Kimden"></h:outputLabel>
+        <h:outputLabel value=":"></h:outputLabel>
+        <p:selectOneMenu  value="#{sahibindenController.kimden}">
+            <f:selectItem itemLabel="Emlak Ofisinden" itemValue="Emlak Ofisinden" />
+            <f:selectItem itemLabel="Sahibinden" itemValue="Sahibinden" />
+            <f:selectItem itemLabel="Insaat Firmasindan" itemValue="Insaat Firmasindan" />
+        </p:selectOneMenu>
+        
+         <h:outputLabel value="Takasa Uygun Mu"></h:outputLabel>
+        <h:outputLabel value=":"></h:outputLabel>
+        <p:selectOneMenu   value="#{sahibindenController.takas}">
+            <f:selectItem itemLabel="Hayir" itemValue="Hayir" />
+            <f:selectItem itemLabel="Evet" itemValue="Evet" />
+        </p:selectOneMenu>
+ 
+       
+     </h:panelGrid>
+     <p:commandButton value="Ara" action="#{sahibindenController.predict}" update="result"></p:commandButton>
+     <h:outputLabel id="result" value="#{sahibindenController.result}"></h:outputLabel>
+
+
+
+ </p:fieldset>
+ 
+ <p:fieldset legend="Data Set">
+  <p:commandButton value="Show Data Set" action="#{sahibindenController.showDataSet}" update="table"></p:commandButton>
+  
+  
+  <p:dataTable var="car" id="table" value="#{sahibindenController.dataset}"  paginator="true" rows="10">
+        
+        <p:column headerText="Fiyat">
+            <h:outputText value="#{car.fiyat}" />
+        </p:column>
+        
+        <p:column headerText="Sehir">
+            <h:outputText value="#{car.sehir}" />
+        </p:column>
+ 
+        <p:column headerText="İlce">
+            <h:outputText value="#{car.ilce}" />
+        </p:column>
+ 
+        <p:column headerText="Mahalle">
+            <h:outputText value="#{car.mahalle}" />
+        </p:column>
+ 
+        <p:column headerText="Yil">
+            <h:outputText value="#{car.yil}" />
+        </p:column>
+        
+        <p:column headerText="m2">
+            <h:outputText value="#{car.m2}" />
+        </p:column>
+        
+         <p:column headerText="oda sayisi">
+            <h:outputText value="#{car.odaSayisi}" />
+        </p:column>
+        
+        <p:column headerText="banyo sayisi">
+            <h:outputText value="#{car.banyoSayisi}" />
+        </p:column>
+        
+        <p:column headerText="bina yasi">
+            <h:outputText value="#{car.binaYasi}" />
+        </p:column>
+        
+        <p:column headerText="bina kat sayisi">
+            <h:outputText value="#{car.binaKatSayisi}" />
+        </p:column>
+        
+        <p:column headerText="bulundugu kat">
+            <h:outputText value="#{car.bulunduguKat}" />
+        </p:column>
+        
+        <p:column headerText="ısıtma">
+            <h:outputText value="#{car.isitma}" />
+        </p:column>
+        
+        <p:column headerText="kullanım durumu">
+            <h:outputText value="#{car.kullanimDurumu}" />
+        </p:column>
+        
+        <p:column headerText="krediye uygun mu">
+            <h:outputText value="#{car.krediyeUygunMu}" />
+        </p:column>
+        
+        <p:column headerText="kimden">
+            <h:outputText value="#{car.kimden}" />
+        </p:column>
+        
+        <p:column headerText="takas">
+            <h:outputText value="#{car.takas}" />
+        </p:column>
+        
+        
+        
+    </p:dataTable>
+  
+  
+  </p:fieldset>
+  
+     </h:form>      
+</h:body>
+</html> 
